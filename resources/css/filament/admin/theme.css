@@ -64,11 +64,11 @@
 }
 
 .fi-sidebar-group-label {
-    @apply text-white/70;
+    @apply text-white/50;
 }
 
 .fi-sidebar-item-button {
-    @apply text-white/75 hover:bg-white/15 hover:text-white rounded-lg;
+    @apply text-white/90 hover:bg-white/15 hover:text-white rounded-lg;
 }
 
 .fi-sidebar-item-active .fi-sidebar-item-button,

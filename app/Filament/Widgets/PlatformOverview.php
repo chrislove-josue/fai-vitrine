@@ -6,9 +6,9 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Subscription;
-use Filament\Support\Icons\Heroicon;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\HtmlString;
 
 class PlatformOverview extends StatsOverviewWidget
 {
@@ -78,7 +78,7 @@ class PlatformOverview extends StatsOverviewWidget
 
         return [
             Stat::make('Chiffre d\'affaires encaissé', number_format($revenue, 0, ',', ' ').' XOF')
-                ->icon(Heroicon::OutlinedBanknotes)
+                ->icon(new HtmlString('<i class="bi bi-cash-stack text-lg"></i>'))
                 ->description($revenueTrend !== null
                     ? ($revenueTrend >= 0 ? '+'.$revenueTrend.'%' : $revenueTrend.'%').' ce mois-ci'
                     : 'Paiements réussis cumulés')
@@ -87,7 +87,7 @@ class PlatformOverview extends StatsOverviewWidget
                     : 'success'),
 
             Stat::make('Abonnements actifs', number_format($activeSubscriptions))
-                ->icon(Heroicon::OutlinedPlayCircle)
+                ->icon(new HtmlString('<i class="bi bi-play-circle text-lg"></i>'))
                 ->description($subTrend !== null
                     ? ($subTrend >= 0 ? '+'.$subTrend.'%' : $subTrend.'%').' ce mois-ci'
                     : 'En cours de service')
@@ -96,12 +96,12 @@ class PlatformOverview extends StatsOverviewWidget
                     : 'success'),
 
             Stat::make('Abonnements suspendus', number_format($suspendedSubscriptions))
-                ->icon(Heroicon::OutlinedPauseCircle)
+                ->icon(new HtmlString('<i class="bi bi-pause-circle text-lg"></i>'))
                 ->description('En attente de règlement')
                 ->descriptionColor('warning'),
 
             Stat::make('Clients actifs', number_format($activeCustomers))
-                ->icon(Heroicon::OutlinedUsers)
+                ->icon(new HtmlString('<i class="bi bi-people text-lg"></i>'))
                 ->description($customerTrend !== null
                     ? ($customerTrend >= 0 ? '+'.$customerTrend.'%' : $customerTrend.'%').' ce mois-ci'
                     : 'Comptes opérationnels')
@@ -110,12 +110,12 @@ class PlatformOverview extends StatsOverviewWidget
                     : 'primary'),
 
             Stat::make('Factures en retard', number_format($overdueInvoices))
-                ->icon(Heroicon::OutlinedExclamationTriangle)
+                ->icon(new HtmlString('<i class="bi bi-exclamation-triangle text-lg"></i>'))
                 ->description('À relancer')
                 ->descriptionColor('danger'),
 
             Stat::make('Paiements en attente', number_format($pendingPayments))
-                ->icon(Heroicon::OutlinedClock)
+                ->icon(new HtmlString('<i class="bi bi-clock text-lg"></i>'))
                 ->description('À acquitter')
                 ->descriptionColor('warning'),
         ];

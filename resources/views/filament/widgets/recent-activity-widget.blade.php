@@ -1,7 +1,7 @@
 <div class="fai-widget-card" style="height:100%">
     <div class="fai-widget-header">
         <span class="fai-widget-title">
-            <x-heroicon-o-clock class="h-4 w-4 text-[#0B2545]" />
+            <i class="bi bi-clock-history text-[#0B2545]"></i>
             Activité récente
         </span>
     </div>

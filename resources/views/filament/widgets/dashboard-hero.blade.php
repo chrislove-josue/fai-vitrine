@@ -31,7 +31,7 @@
     <div class="rounded-xl border border-[#E4EAF2] bg-white p-4 shadow-card">
         <div class="flex items-center gap-2">
             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0B2545]/10">
-                <x-heroicon-o-banknotes class="h-4 w-4 text-[#0B2545]" />
+                <i class="bi bi-cash-stack text-[#0B2545] text-sm"></i>
             </div>
             <span class="text-[10px] font-semibold uppercase tracking-wide text-[#667085]">Revenus total</span>
         </div>
@@ -51,7 +51,7 @@
     <div class="rounded-xl border border-[#E4EAF2] bg-white p-4 shadow-card">
         <div class="flex items-center gap-2">
             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0F8B5E]/10">
-                <x-heroicon-o-play-circle class="h-4 w-4 text-[#0F8B5E]" />
+                <i class="bi bi-play-circle text-[#0F8B5E] text-sm"></i>
             </div>
             <span class="text-[10px] font-semibold uppercase tracking-wide text-[#667085]">Abonnés actifs</span>
         </div>
@@ -61,7 +61,7 @@
     <div class="rounded-xl border border-[#E4EAF2] bg-white p-4 shadow-card">
         <div class="flex items-center gap-2">
             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#13355F]/10">
-                <x-heroicon-o-users class="h-4 w-4 text-[#13355F]" />
+                <i class="bi bi-people text-[#13355F] text-sm"></i>
             </div>
             <span class="text-[10px] font-semibold uppercase tracking-wide text-[#667085]">Clients</span>
         </div>
@@ -71,7 +71,7 @@
     <div class="rounded-xl border border-[#E4EAF2] bg-white p-4 shadow-card">
         <div class="flex items-center gap-2">
             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#C9A24B]/10">
-                <x-heroicon-o-document-text class="h-4 w-4 text-[#C9A24B]" />
+                <i class="bi bi-receipt text-[#C9A24B] text-sm"></i>
             </div>
             <span class="text-[10px] font-semibold uppercase tracking-wide text-[#667085]">Factures en attente</span>
         </div>

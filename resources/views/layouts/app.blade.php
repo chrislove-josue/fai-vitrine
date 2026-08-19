@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
             --jeny-primary: #0B2545;
@@ -64,14 +65,14 @@
         .sidebar-link {
             display: flex; align-items: center; gap: .65rem;
             padding: .55rem .75rem; border-radius: var(--radius-sm);
-            color: rgba(255,255,255,.65); text-decoration: none;
+            color: rgba(255,255,255,.85); text-decoration: none;
             font-size: .82rem; font-weight: 500; white-space: nowrap;
             transition: background .15s, color .15s;
         }
         .sidebar-link:hover { background: rgba(255,255,255,.1); color: white; }
         .sidebar-link.active { background: rgba(255,255,255,.18); color: white; font-weight: 600; }
-        .sidebar-link.active svg { color: var(--jeny-accent); }
-        .sidebar-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .sidebar-link.active i { color: var(--jeny-accent); }
+        .sidebar-link i { font-size: 1.05rem; width: 20px; text-align: center; flex-shrink: 0; }
 
         .sidebar-section {
             font-size: .65rem; font-weight: 600; text-transform: uppercase;
@@ -376,25 +377,25 @@
             <nav class="sidebar-nav" aria-label="Navigation espace client">
                 <div class="sidebar-section">Menu</div>
                 <a class="sidebar-link {{ request()->routeIs('dashboard.index') ? 'active' : '' }}" href="{{ route('dashboard.index') }}">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm1 7a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5z" clip-rule="evenodd"/></svg>
+                    <i class="bi bi-grid-1x2"></i>
                     Tableau de bord
                 </a>
                 <a class="sidebar-link {{ request()->routeIs('client.invoices.*') ? 'active' : '' }}" href="{{ route('client.invoices.index') }}">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                    <i class="bi bi-receipt"></i>
                     Factures
                 </a>
                 <a class="sidebar-link {{ request()->routeIs('client.payments.*') ? 'active' : '' }}" href="{{ route('client.payments.index') }}">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zm14 5H2v6a2 2 0 002 2h12a2 2 0 002-2V9zM5 13a1 1 0 011-1h1a1 1 0 110 2H6a1 1 0 01-1-1z"/></svg>
+                    <i class="bi bi-credit-card"></i>
                     Paiements
                 </a>
                 <a class="sidebar-link {{ request()->routeIs('client.sessions.*') ? 'active' : '' }}" href="{{ route('client.sessions.index') }}">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm11.3-3.3a1 1 0 00-1.4-1.4L9 8.6 7.7 7.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
+                    <i class="bi bi-graph-up"></i>
                     Consommation
                 </a>
 
                 <div class="sidebar-section">Compte</div>
                 <a class="sidebar-link {{ request()->routeIs('client.profile.*') ? 'active' : '' }}" href="{{ route('client.profile.show') }}">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                    <i class="bi bi-person"></i>
                     Mon profil
                 </a>
             </nav>
@@ -410,7 +411,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="sidebar-logout" type="submit">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h5v-2H4V5h4V3H3zm11.707 4.293a1 1 0 010 1.414L11.414 11H17a1 1 0 110 2h-5.586l3.293 3.293a1 1 0 01-1.414 1.414l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <i class="bi bi-box-arrow-left"></i>
                         Déconnexion
                     </button>
                 </form>

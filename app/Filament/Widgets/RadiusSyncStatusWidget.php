@@ -5,13 +5,13 @@ namespace App\Filament\Widgets;
 use App\Models\IspRadiusSyncState;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\HtmlString;
 
 class RadiusSyncStatusWidget extends TableWidget
 {
@@ -54,7 +54,7 @@ class RadiusSyncStatusWidget extends TableWidget
             ->headerActions([
                 Action::make('sync_now')
                     ->label('Synchroniser')
-                    ->icon(Heroicon::OutlinedArrowPathRoundedSquare)
+                    ->icon(new HtmlString('<i class="bi bi-arrow-repeat"></i>'))
                     ->color('primary')
                     ->action(function () {
                         $result = Artisan::call('radius:sync');

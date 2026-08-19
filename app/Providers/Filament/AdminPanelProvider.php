@@ -31,12 +31,12 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('img/logo-jeny.png'))
             ->brandLogoHeight('2.25rem')
             ->login()
-            ->font('Inter')
+            ->font('Montserrat')
             ->colors([
-                'primary' => Color::hex('#0057B8'),
-                'secondary' => Color::hex('#007BFF'),
-                'success' => Color::hex('#12B76A'),
-                'warning' => Color::hex('#F7941D'),
+                'primary' => Color::hex('#0B2545'),
+                'secondary' => Color::hex('#13355F'),
+                'success' => Color::hex('#0F8B5E'),
+                'warning' => Color::hex('#C9A24B'),
                 'danger' => Color::hex('#D92D20'),
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')

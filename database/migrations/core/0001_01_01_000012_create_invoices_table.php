@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('subscription_id')->nullable()->constrained('subscriptions')->nullOnDelete();
             $table->enum('status', ['draft', 'issued', 'partially_paid', 'paid', 'overdue', 'cancelled', 'refunded'])->default('draft')->index();
             $table->timestamp('issue_date');
-            $table->timestamp('due_date');
+            $table->timestamp('due_date')->nullable();  // ✅ Correction : ajout de nullable()
             $table->unsignedBigInteger('subtotal')->default(0);
             $table->unsignedBigInteger('discount')->default(0);
             $table->unsignedBigInteger('tax')->default(0);

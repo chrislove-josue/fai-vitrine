@@ -7,30 +7,30 @@
     <title>@yield('title', config('app.name')) — {{ config('app.name') }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --jeny-primary: #0057B8;
-            --jeny-secondary: #007BFF;
-            --jeny-accent: #F7941D;
-            --text-primary: #172033;
+            --jeny-primary: #0B2545;
+            --jeny-secondary: #13355F;
+            --jeny-accent: #C9A24B;
+            --text-primary: #10151F;
             --text-secondary: #667085;
             --bg: #FFFFFF;
-            --bg-secondary: #F4F8FC;
+            --bg-secondary: #F7F5F0;
             --border: #E4EAF2;
-            --success: #12B76A;
-            --warning: #F79009;
+            --success: #0F8B5E;
+            --warning: #C9A24B;
             --danger: #D92D20;
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
-            --shadow-sm: 0 2px 8px rgba(16, 24, 40, 0.05);
-            --shadow-md: 0 4px 16px rgba(16, 24, 40, 0.08);
+            --shadow-sm: 0 10px 30px -12px rgba(11, 37, 69, 0.18);
+            --shadow-md: 0 20px 40px -15px rgba(11, 37, 69, 0.28);
         }
         * { box-sizing: border-box; margin: 0; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
             background: var(--bg-secondary);
             color: var(--text-primary);
             min-height: 100vh;
@@ -45,6 +45,7 @@
             position: sticky; top: 0; z-index: 50;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(11, 37, 69, 0.06);
         }
         .site-header .header-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
@@ -124,6 +125,7 @@
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
             padding: 1rem 1.25rem;
+            position: relative;
         }
         .stat .value { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); letter-spacing: -.01em; margin-top: .35rem; }
         .stat .value.accent { color: var(--jeny-accent); }
@@ -164,7 +166,7 @@
         .btn.outline { background: transparent; color: var(--jeny-primary); border: 1px solid var(--jeny-primary); }
         .btn.outline:hover { background: var(--jeny-primary); color: white; }
         .btn.accent { background: var(--jeny-accent); color: white; }
-        .btn.accent:hover { background: #E08416; }
+        .btn.accent:hover { background: #B8923F; }
         .btn.danger { background: var(--danger); color: white; }
         .btn.danger:hover { background: #B42318; }
         .btn.sm { padding: .35rem .8rem; font-size: .72rem; }
@@ -241,9 +243,9 @@
             border-radius: var(--radius-md); padding: 1rem 1.25rem;
             margin-bottom: .75rem; border: 1px solid;
         }
-        .alert-card.warning { background: #FFFAEB; border-color: rgba(247,144,9,.25); color: #B54708; }
+        .alert-card.warning { background: #FFFAEB; border-color: rgba(201,162,75,.25); color: #B54708; }
         .alert-card.danger { background: #FEF3F2; border-color: rgba(217,45,32,.25); color: #B42318; }
-        .alert-card.success { background: #ECFDF3; border-color: rgba(18,183,106,.25); color: #027A48; }
+        .alert-card.success { background: #ECFDF3; border-color: rgba(15,139,94,.25); color: #027A48; }
         .alert-card .alert-icon { flex-shrink: 0; margin-top: 2px; }
         .alert-card .alert-body { flex: 1; min-width: 0; }
         .alert-card .alert-title { font-size: .85rem; font-weight: 600; }
@@ -261,7 +263,7 @@
         .quick-action.primary { background: var(--jeny-primary); color: white; }
         .quick-action.primary:hover { background: var(--jeny-secondary); transform: translateY(-1px); }
         .quick-action.accent { background: var(--jeny-accent); color: white; }
-        .quick-action.accent:hover { background: #E08416; transform: translateY(-1px); }
+        .quick-action.accent:hover { background: #B8923F; transform: translateY(-1px); }
         .quick-action.outline {
             background: white; color: var(--jeny-primary);
             border: 1px solid var(--jeny-primary);

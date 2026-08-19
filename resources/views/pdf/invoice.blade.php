@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <title>Facture {{ $invoice->invoice_number }}</title>
     <style>
-        body { font-family: DejaVu Sans, sans-serif; font-size: 12px; color: #1e293b; margin: 0; }
+        body { font-family: Montserrat, DejaVu Sans, sans-serif; font-size: 12px; color: #10151F; margin: 0; }
         .header { width: 100%; }
-        .brand { font-size: 18px; font-weight: bold; color: #0f766e; }
-        .muted { color: #64748b; }
+        .brand { font-size: 18px; font-weight: bold; color: #0B2545; }
+        .muted { color: #667085; }
         .right { text-align: right; }
         .meta { margin-top: 1.5rem; }
         .meta td { padding: .15rem .5rem .15rem 0; }
         table.items { width: 100%; border-collapse: collapse; margin-top: 2rem; }
-        table.items th, table.items td { border: 1px solid #cbd5e1; padding: .5rem; text-align: left; }
-        table.items th { background: #f1f5f9; }
+        table.items th, table.items td { border: 1px solid #E4EAF2; padding: .5rem; text-align: left; }
+        table.items th { background: #F7F5F0; }
         table.items td.num, table.items th.num { text-align: right; }
         .totals { width: 45%; margin-left: auto; margin-top: 1rem; }
         .totals td { padding: .3rem .5rem; }
         .totals td.num { text-align: right; }
         .grand { font-weight: bold; font-size: 13px; }
-        .footer { margin-top: 2.5rem; font-size: 10px; color: #64748b; }
-        .badge { border: 1px solid #0f766e; color: #0f766e; padding: .1rem .5rem; border-radius: 6px; font-size: 10px; }
+        .footer { margin-top: 2.5rem; font-size: 10px; color: #667085; }
+        .badge { border: 1px solid #0B2545; color: #0B2545; padding: .1rem .5rem; border-radius: 6px; font-size: 10px; }
     </style>
 </head>
 <body>

@@ -4,6 +4,16 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --color-fai-navy: #0B2545;
+    --color-fai-navy-light: #13355F;
+    --color-fai-gold: #C9A24B;
+    --color-fai-green: #0F8B5E;
+    --color-fai-cream: #F7F5F0;
+    --color-fai-ink: #10151F;
+
+    --shadow-card: 0 10px 30px -12px rgba(11, 37, 69, 0.18);
+    --shadow-card-hover: 0 20px 40px -15px rgba(11, 37, 69, 0.28);
 }

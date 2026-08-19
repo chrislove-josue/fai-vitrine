@@ -1,7 +1,7 @@
 <div class="fai-widget-card">
     <div class="fai-widget-header">
         <span class="fai-widget-title">
-            <x-heroicon-o-bell class="h-4 w-4 text-[#F7941D]" />
+            <x-heroicon-o-bell class="h-4 w-4 text-[#C9A24B]" />
             Alertes
         </span>
     </div>

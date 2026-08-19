@@ -11,14 +11,14 @@
         {{-- HERO --}}
         <section class="hero">
             <div>
-                <p class="eyebrow" style="color:#F7941D">Espace client &middot; JENY SAS</p>
-                <h1>Bonjour, <span style="color:#F7941D">{{ $customer->display_name }}</span></h1>
+                <p class="eyebrow" style="color:#C9A24B">Espace client &middot; JENY SAS</p>
+                <h1>Bonjour, <span style="color:#C9A24B">{{ $customer->display_name }}</span></h1>
                 <p class="hero-sub">
                     N° client <strong>{{ $customer->customer_number }}</strong> &middot;
                     @if ($subscriptions->where('status', 'active')->isNotEmpty())
-                        Votre abonnement est <strong style="color:#12B76A">actif</strong>
+                        Votre abonnement est <strong style="color:#0F8B5E">actif</strong>
                     @elseif ($subscriptions->where('status', 'grace_period')->isNotEmpty())
-                        Votre abonnement est en <strong style="color:#F7941D">période de grâce</strong>
+                        Votre abonnement est en <strong style="color:#C9A24B">période de grâce</strong>
                     @else
                         Vous n'avez pas d'abonnement actif en ce moment
                     @endif

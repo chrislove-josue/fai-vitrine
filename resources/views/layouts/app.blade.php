@@ -26,6 +26,7 @@
             --radius-lg: 16px;
             --shadow-sm: 0 10px 30px -12px rgba(11, 37, 69, 0.18);
             --shadow-md: 0 20px 40px -15px rgba(11, 37, 69, 0.28);
+            --sidebar-w: 260px;
         }
         * { box-sizing: border-box; margin: 0; }
         html { scroll-behavior: smooth; }
@@ -34,66 +35,109 @@
             background: var(--bg-secondary);
             color: var(--text-primary);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             -webkit-font-smoothing: antialiased;
         }
-        :focus-visible { outline: 3px solid var(--jeny-primary); outline-offset: 2px; }
+        :focus-visible { outline: 3px solid var(--jeny-accent); outline-offset: 2px; }
 
-        /* ---------- Header blanc ---------- */
-        .site-header {
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            position: fixed; top: 0; left: 0; bottom: 0;
+            width: var(--sidebar-w); z-index: 100;
+            background: var(--jeny-primary);
+            display: flex; flex-direction: column;
+            transition: transform .25s ease;
+        }
+        .sidebar-brand {
+            display: flex; align-items: center; gap: .75rem;
+            padding: 1.25rem 1.25rem 1rem;
+            text-decoration: none;
+        }
+        .sidebar-brand img { height: 32px; width: auto; }
+        .sidebar-brand span { font-weight: 700; font-size: .95rem; color: white; }
+
+        .sidebar-nav {
+            flex: 1; overflow-y: auto; padding: .5rem .75rem;
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .sidebar-nav::-webkit-scrollbar { width: 0; }
+
+        .sidebar-link {
+            display: flex; align-items: center; gap: .65rem;
+            padding: .55rem .75rem; border-radius: var(--radius-sm);
+            color: rgba(255,255,255,.65); text-decoration: none;
+            font-size: .82rem; font-weight: 500; white-space: nowrap;
+            transition: background .15s, color .15s;
+        }
+        .sidebar-link:hover { background: rgba(255,255,255,.1); color: white; }
+        .sidebar-link.active { background: rgba(255,255,255,.18); color: white; font-weight: 600; }
+        .sidebar-link.active svg { color: var(--jeny-accent); }
+        .sidebar-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+        .sidebar-section {
+            font-size: .65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: .1em; color: rgba(255,255,255,.35);
+            padding: .75rem .75rem .35rem;
+        }
+
+        .sidebar-footer {
+            border-top: 1px solid rgba(255,255,255,.1);
+            padding: .75rem;
+        }
+        .sidebar-user {
+            display: flex; align-items: center; gap: .6rem;
+            padding: .5rem .6rem; border-radius: var(--radius-sm);
+        }
+        .sidebar-avatar {
+            width: 34px; height: 34px; border-radius: var(--radius-sm);
+            background: var(--jeny-accent); color: var(--jeny-primary);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: .8rem; flex-shrink: 0;
+        }
+        .sidebar-user-info { flex: 1; min-width: 0; }
+        .sidebar-user-name { font-weight: 600; font-size: .82rem; color: white; line-height: 1.1; display: block; }
+        .sidebar-user-role { font-size: .65rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; display: block; }
+        .sidebar-logout {
+            display: flex; align-items: center; gap: .5rem;
+            width: 100%; padding: .45rem .6rem; margin-top: .35rem;
+            border: 0; border-radius: var(--radius-sm);
+            background: rgba(255,255,255,.08); color: rgba(255,255,255,.6);
+            font-family: inherit; font-size: .75rem; font-weight: 500;
+            cursor: pointer; transition: background .15s, color .15s;
+        }
+        .sidebar-logout:hover { background: rgba(255,255,255,.15); color: white; }
+        .sidebar-logout svg { width: 16px; height: 16px; }
+
+        /* Mobile toggle */
+        .sidebar-toggle {
+            display: none; position: fixed; top: .75rem; left: .75rem; z-index: 110;
+            width: 40px; height: 40px; border-radius: var(--radius-sm);
+            background: var(--jeny-primary); border: 0; color: white;
+            cursor: pointer; align-items: center; justify-content: center;
+        }
+        .sidebar-toggle svg { width: 20px; height: 20px; }
+        .sidebar-overlay {
+            display: none; position: fixed; inset: 0; z-index: 90;
+            background: rgba(0,0,0,.4);
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            margin-left: var(--sidebar-w);
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+        }
+        .topbar {
             position: sticky; top: 0; z-index: 50;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
             box-shadow: 0 1px 3px rgba(11, 37, 69, 0.06);
+            padding: 0 2rem;
+            height: 56px; display: flex; align-items: center; justify-content: space-between;
         }
-        .site-header .header-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
-            height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-        }
-        .brand { display: flex; align-items: center; gap: .75rem; color: var(--text-primary); text-decoration: none; }
-        .brand img { height: 36px; width: auto; }
-        .brand .brand-name { font-weight: 700; font-size: 1rem; color: var(--jeny-primary); }
-        .header-right { display: flex; align-items: center; gap: 1rem; }
-        .user-chip {
-            display: flex; align-items: center; gap: .6rem;
-            padding: .35rem .9rem .35rem .35rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            background: var(--bg);
-        }
-        .user-chip .avatar {
-            width: 32px; height: 32px; border-radius: var(--radius-sm);
-            background: var(--jeny-primary); color: white;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 600; font-size: .75rem;
-        }
-        .user-chip .user-name { font-weight: 600; font-size: .82rem; color: var(--text-primary); line-height: 1.1; }
-        .user-chip .user-role { font-size: .68rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+        .topbar-title { font-size: .85rem; font-weight: 600; color: var(--text-primary); }
+        .topbar-right { display: flex; align-items: center; gap: .75rem; }
 
-        /* ---------- Sub-nav ---------- */
-        .sub-nav {
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-        }
-        .sub-nav .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: .6rem 1.5rem;
-            display: flex; align-items: center; gap: .35rem; overflow-x: auto; scrollbar-width: none;
-        }
-        .sub-nav .nav-inner::-webkit-scrollbar { display: none; }
-        .nav-pill {
-            display: inline-flex; align-items: center; gap: .45rem;
-            padding: .45rem 1rem; border-radius: var(--radius-sm);
-            color: var(--text-secondary); text-decoration: none;
-            font-size: .82rem; font-weight: 500; white-space: nowrap;
-            transition: background .15s, color .15s;
-        }
-        .nav-pill:hover { background: var(--bg-secondary); color: var(--text-primary); }
-        .nav-pill.active { background: var(--jeny-primary); color: white; }
-        .nav-pill.active svg { color: white; }
-
-        /* ---------- Container ---------- */
-        .page { width: 100%; max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; flex: 1; }
+        .page { width: 100%; max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem 3rem; flex: 1; }
 
         .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .eyebrow {
@@ -297,10 +341,18 @@
         .stat.improved.green::before { background: var(--success); }
         .stat.improved.red::before { background: var(--danger); }
 
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1024px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar-toggle { display: flex; }
+            .sidebar-overlay.open { display: block; }
+            .main-content { margin-left: 0; }
+            .topbar { padding-left: 3.5rem; }
+        }
         @media (max-width: 640px) {
             .dl { grid-template-columns: 1fr; gap: .2rem; }
             .dl dd { margin-bottom: .5rem; }
-            .header-inner { height: 56px; }
             .page { padding: 1rem; }
             .grid { grid-template-columns: 1fr; }
         }
@@ -308,83 +360,110 @@
 </head>
 <body class="@auth @else auth-page @endauth">
     @auth
-        <header class="site-header">
-            <div class="header-inner">
-                <a class="brand" href="{{ auth()->user()->homeRoute() }}">
-                    <img src="{{ asset('img/logo-jeny.png') }}" alt="JENY SAS">
+        {{-- Mobile toggle --}}
+        <button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open')" aria-label="Menu">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open')"></div>
+
+        {{-- Sidebar --}}
+        <aside class="sidebar">
+            <a class="sidebar-brand" href="{{ route('dashboard.index') }}">
+                <img src="{{ asset('img/logo-jeny.png') }}" alt="JENY SAS">
+                <span>JENY SAS</span>
+            </a>
+
+            <nav class="sidebar-nav" aria-label="Navigation espace client">
+                <div class="sidebar-section">Menu</div>
+                <a class="sidebar-link {{ request()->routeIs('dashboard.index') ? 'active' : '' }}" href="{{ route('dashboard.index') }}">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm1 7a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5z" clip-rule="evenodd"/></svg>
+                    Tableau de bord
                 </a>
-                <div class="header-right">
-                    <div class="user-chip">
-                        <span class="avatar">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</span>
-                        <span>
-                            <span class="user-name">{{ auth()->user()->name }}</span><br>
-                            <span class="user-role">{{ auth()->user()->isClient() ? 'Client' : 'Staff' }}</span>
-                        </span>
-                    </div>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button class="btn outline sm" type="submit" title="Se déconnecter">Déconnexion</button>
-                    </form>
-                </div>
-            </div>
-        </header>
+                <a class="sidebar-link {{ request()->routeIs('client.invoices.*') ? 'active' : '' }}" href="{{ route('client.invoices.index') }}">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                    Factures
+                </a>
+                <a class="sidebar-link {{ request()->routeIs('client.payments.*') ? 'active' : '' }}" href="{{ route('client.payments.index') }}">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zm14 5H2v6a2 2 0 002 2h12a2 2 0 002-2V9zM5 13a1 1 0 011-1h1a1 1 0 110 2H6a1 1 0 01-1-1z"/></svg>
+                    Paiements
+                </a>
+                <a class="sidebar-link {{ request()->routeIs('client.sessions.*') ? 'active' : '' }}" href="{{ route('client.sessions.index') }}">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm11.3-3.3a1 1 0 00-1.4-1.4L9 8.6 7.7 7.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
+                    Consommation
+                </a>
 
-        @if (auth()->user()->isClient())
-            <nav class="sub-nav" aria-label="Navigation espace client">
-                <div class="nav-inner">
-                    <a class="nav-pill {{ request()->routeIs('dashboard.index') ? 'active' : '' }}" href="{{ route('dashboard.index') }}">
-                        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm1 7a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5z" clip-rule="evenodd"/></svg>
-                        Tableau de bord
-                    </a>
-                    <a class="nav-pill {{ request()->routeIs('client.invoices.*') ? 'active' : '' }}" href="{{ route('client.invoices.index') }}">
-                        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-                        Factures
-                    </a>
-                    <a class="nav-pill {{ request()->routeIs('client.payments.*') ? 'active' : '' }}" href="{{ route('client.payments.index') }}">
-                        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zm14 5H2v6a2 2 0 002 2h12a2 2 0 002-2V9zM5 13a1 1 0 011-1h1a1 1 0 110 2H6a1 1 0 01-1-1z"/></svg>
-                        Paiements
-                    </a>
-                    <a class="nav-pill {{ request()->routeIs('client.sessions.*') ? 'active' : '' }}" href="{{ route('client.sessions.index') }}">
-                        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm11.3-3.3a1 1 0 00-1.4-1.4L9 8.6 7.7 7.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
-                        Consommation
-                    </a>
-                    <a class="nav-pill {{ request()->routeIs('client.profile.*') ? 'active' : '' }}" href="{{ route('client.profile.show') }}">
-                        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
-                        Profil
-                    </a>
-                </div>
+                <div class="sidebar-section">Compte</div>
+                <a class="sidebar-link {{ request()->routeIs('client.profile.*') ? 'active' : '' }}" href="{{ route('client.profile.show') }}">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                    Mon profil
+                </a>
             </nav>
-        @endif
-    @endauth
 
-    @auth
-    <main class="page">
-    @else
-    <div class="auth-wrap">
-        <a class="brand" href="/">
-            <img src="{{ asset('img/logo-jeny.png') }}" alt="JENY SAS">
-        </a>
-    @endauth
-
-        @if (session('status'))
-            <div class="success">✓ {{ session('status') }}</div>
-        @endif
-        @if (session('error'))
-            <div class="error">✕ {{ session('error') }}</div>
-        @endif
-        @if ($errors->any())
-            <div class="error">
-                @foreach ($errors->all() as $error)
-                    <div>✕ {{ $error }}</div>
-                @endforeach
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <span class="sidebar-avatar">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</span>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">{{ auth()->user()->name }}</span>
+                        <span class="sidebar-user-role">{{ auth()->user()->isClient() ? 'Client' : 'Staff' }}</span>
+                    </div>
+                </div>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="sidebar-logout" type="submit">
+                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h5v-2H4V5h4V3H3zm11.707 4.293a1 1 0 010 1.414L11.414 11H17a1 1 0 110 2h-5.586l3.293 3.293a1 1 0 01-1.414 1.414l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        Déconnexion
+                    </button>
+                </form>
             </div>
-        @endif
-        @yield('content')
+        </aside>
 
-    @auth
-    </main>
+        {{-- Main content --}}
+        <div class="main-content">
+            <div class="topbar">
+                <span class="topbar-title">@yield('title', 'Tableau de bord')</span>
+                <div class="topbar-right">
+                    <span style="font-size:.75rem;color:var(--text-secondary)">{{ now()->locale('fr')->translatedFormat('d/m/Y') }}</span>
+                </div>
+            </div>
+
+            <main class="page">
+                @if (session('status'))
+                    <div class="success">✓ {{ session('status') }}</div>
+                @endif
+                @if (session('error'))
+                    <div class="error">✕ {{ session('error') }}</div>
+                @endif
+                @if ($errors->any())
+                    <div class="error">
+                        @foreach ($errors->all() as $error)
+                            <div>✕ {{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+                @yield('content')
+            </main>
+        </div>
     @else
-    </div>
+        {{-- Auth pages (no sidebar) --}}
+        <div class="auth-wrap">
+            <a class="brand" href="/" style="display:flex;align-items:center;gap:.75rem;text-decoration:none">
+                <img src="{{ asset('img/logo-jeny.png') }}" alt="JENY SAS" style="height:36px">
+            </a>
+            @if (session('status'))
+                <div class="success">✓ {{ session('status') }}</div>
+            @endif
+            @if (session('error'))
+                <div class="error">✕ {{ session('error') }}</div>
+            @endif
+            @if ($errors->any())
+                <div class="error">
+                    @foreach ($errors->all() as $error)
+                        <div>✕ {{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
+            @yield('content')
+        </div>
     @endauth
 </body>
 </html>

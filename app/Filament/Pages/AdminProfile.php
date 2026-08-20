@@ -23,8 +23,6 @@ class AdminProfile extends EditProfile
 
     protected static ?string $title = 'Mon profil';
 
-    protected static bool $isDiscovered = false;
-
     public static function isSimple(): bool
     {
         return false;

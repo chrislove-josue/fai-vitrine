@@ -4,9 +4,9 @@ namespace App\Filament\Pages;
 
 use Filament\Auth\Pages\EditProfile;
 use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Auth;
@@ -88,6 +88,14 @@ class AdminProfile extends EditProfile
                     ->icon('heroicon-o-key')
                     ->description('Laissez vide pour conserver le mot de passe actuel.')
                     ->schema([
+                        TextInput::make('currentPassword')
+                            ->label('Mot de passe actuel')
+                            ->password()
+                            ->revealable(filament()->arePasswordsRevealable())
+                            ->autocomplete('current-password')
+                            ->currentPassword(guard: \Filament\Facades\Filament::getAuthGuard())
+                            ->required()
+                            ->dehydrated(false),
                         TextInput::make('password')
                             ->label('Nouveau mot de passe')
                             ->password()
@@ -103,16 +111,6 @@ class AdminProfile extends EditProfile
                             ->revealable(filament()->arePasswordsRevealable())
                             ->autocomplete('new-password')
                             ->required()
-                            ->visible(fn ($get): bool => filled($get('password')))
-                            ->dehydrated(false),
-                        TextInput::make('currentPassword')
-                            ->label('Mot de passe actuel')
-                            ->password()
-                            ->revealable(filament()->arePasswordsRevealable())
-                            ->autocomplete('current-password')
-                            ->currentPassword(guard: \Filament\Facades\Filament::getAuthGuard())
-                            ->required()
-                            ->visible(fn ($get): bool => filled($get('password')) || ($get('email') !== $user->email))
                             ->dehydrated(false),
                     ])->columns(3),
             ])->columnSpan(['lg' => 2]),

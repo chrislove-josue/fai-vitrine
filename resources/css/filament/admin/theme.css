@@ -162,6 +162,26 @@
     @apply text-xs text-[#667085];
 }
 
+/* ---- Stats overview : couleurs des icônes ---- */
+.fi-wi-stats-overview-stat:nth-child(1) .fi-icon {
+    color: var(--success);
+}
+.fi-wi-stats-overview-stat:nth-child(2) .fi-icon {
+    color: var(--jeny-primary);
+}
+.fi-wi-stats-overview-stat:nth-child(3) .fi-icon {
+    color: var(--warning);
+}
+.fi-wi-stats-overview-stat:nth-child(4) .fi-icon {
+    color: #3B82F6;
+}
+.fi-wi-stats-overview-stat:nth-child(5) .fi-icon {
+    color: var(--danger);
+}
+.fi-wi-stats-overview-stat:nth-child(6) .fi-icon {
+    color: var(--warning);
+}
+
 /* ---- Tables ---- */
 .fi-ta-content .fi-ta-table th {
     @apply text-xs font-semibold uppercase tracking-wide text-[#667085] bg-[#F7F5F0];

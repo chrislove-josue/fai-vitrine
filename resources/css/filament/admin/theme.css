@@ -379,17 +379,9 @@
 }
 
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header .fi-logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.75rem;
+    display: none !important;
 }
 
-.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header .fi-logo img {
-    height: 48px;
-    width: auto;
-}
-
-/* Icon before heading — same as .auth-form-icon */
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header .fi-logo::before {
     display: none;
 }

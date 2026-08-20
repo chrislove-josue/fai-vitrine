@@ -4,31 +4,6 @@
 
 @section('content')
     <div class="auth-card">
-        <div class="auth-card-left">
-            <div class="auth-card-left-content">
-                <img src="{{ asset('img/logo-jeny.png') }}" alt="JENY SAS" class="auth-logo">
-                <h2>Bienvenue sur<br>votre espace client</h2>
-                <p>Gérez vos abonnements, factures et suivez votre consommation en temps réel.</p>
-                <div class="auth-features">
-                    <div class="auth-feature">
-                        <i class="bi bi-receipt"></i>
-                        <span>Factures en ligne</span>
-                    </div>
-                    <div class="auth-feature">
-                        <i class="bi bi-graph-up"></i>
-                        <span>Consommation réseau</span>
-                    </div>
-                    <div class="auth-feature">
-                        <i class="bi bi-credit-card"></i>
-                        <span>Paiement Mobile Money</span>
-                    </div>
-                </div>
-            </div>
-            <div class="auth-card-left-footer">
-                <span>&copy; {{ now()->year }} JENY SAS &middot; Internet fibre, sans compromis</span>
-            </div>
-        </div>
-
         <div class="auth-card-right">
             <div class="auth-form-wrap">
                 <div class="auth-form-header">
@@ -74,6 +49,10 @@
                         Se connecter
                     </button>
                 </form>
+            </div>
+
+            <div class="auth-card-left-footer">
+                <span>&copy; {{ now()->year }} JENY SAS &middot; Internet fibre, sans compromis</span>
             </div>
         </div>
     </div>

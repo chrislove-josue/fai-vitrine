@@ -228,52 +228,16 @@
         .auth-page { background: var(--bg-secondary); min-height: 100vh; }
         .auth-wrap { width: 100%; }
         .auth-card {
-            display: flex; min-height: 100vh;
-        }
-        .auth-card-left {
-            flex: 0 0 42%; max-width: 42%;
-            background: var(--jeny-primary);
             display: flex; flex-direction: column;
-            justify-content: space-between;
-            padding: 2.5rem;
-            position: relative; overflow: hidden;
-        }
-        .auth-card-left::before {
-            content: ''; position: absolute; top: -30%; right: -20%;
-            width: 500px; height: 500px; border-radius: 50%;
-            background: rgba(201, 162, 75, 0.08);
-        }
-        .auth-card-left::after {
-            content: ''; position: absolute; bottom: -20%; left: -15%;
-            width: 400px; height: 400px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-        }
-        .auth-card-left-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .auth-logo { height: 42px; width: auto; margin-bottom: 2rem; filter: brightness(0) invert(1); }
-        .auth-card-left h2 { font-size: 1.75rem; font-weight: 700; color: white; line-height: 1.25; margin-bottom: .75rem; }
-        .auth-card-left p { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.6; max-width: 320px; }
-        .auth-features { display: flex; flex-direction: column; gap: .65rem; margin-top: 2rem; }
-        .auth-feature {
-            display: flex; align-items: center; gap: .6rem;
-            font-size: .82rem; color: rgba(255,255,255,.8); font-weight: 500;
-        }
-        .auth-feature i {
-            width: 32px; height: 32px; border-radius: 8px;
-            background: rgba(255,255,255,.1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: .9rem; color: var(--jeny-accent);
-        }
-        .auth-card-left-footer {
-            position: relative; z-index: 1;
-            font-size: .72rem; color: rgba(255,255,255,.35);
+            min-height: 100vh; align-items: center; justify-content: center;
+            padding: 2rem; background: var(--bg-secondary);
         }
         .auth-card-right {
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            padding: 2rem;
-            background: var(--bg);
+            width: 100%; max-width: 420px;
+            display: flex; flex-direction: column; align-items: center;
         }
-        .auth-form-wrap { width: 100%; max-width: 400px; }
-        .auth-form-header { text-align: center; margin-bottom: 2rem; }
+        .auth-form-wrap { width: 100%; background: white; border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--shadow-sm); }
+        .auth-form-header { text-align: center; margin-bottom: 1.5rem; }
         .auth-form-icon {
             font-size: 2.5rem; color: var(--jeny-primary);
             margin-bottom: .75rem; display: block;
@@ -325,6 +289,10 @@
         }
         .auth-btn:hover { background: var(--jeny-secondary); transform: translateY(-1px); }
         .auth-btn:active { transform: translateY(0); }
+        .auth-card-left-footer {
+            margin-top: 1.5rem; text-align: center;
+            font-size: .72rem; color: var(--text-secondary);
+        }
         .auth-form-footer {
             text-align: center; margin-top: 1.5rem; padding-top: 1rem;
             border-top: 1px solid var(--border);
@@ -341,14 +309,6 @@
         }
         .error { background: #FEF3F2; color: #B42318; border: 1px solid #FECDCA; }
         .success { background: #ECFDF3; color: #027A48; border: 1px solid #A6F4C5; }
-        @media (max-width: 768px) {
-            .auth-card { flex-direction: column; }
-            .auth-card-left { flex: none; max-width: 100%; padding: 2rem 1.5rem; }
-            .auth-card-left h2 { font-size: 1.35rem; }
-            .auth-features { display: none; }
-            .auth-card-left-footer { display: none; }
-            .auth-card-right { padding: 1.5rem; }
-        }
 
         /* ---------- Hero (client dashboard) ---------- */
         .hero {

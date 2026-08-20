@@ -4,27 +4,6 @@
 
 @section('content')
     <div class="auth-card">
-        <div class="auth-card-left">
-            <div class="auth-card-left-content">
-                <img src="{{ asset('img/logo-jeny.png') }}" alt="JENY SAS" class="auth-logo">
-                <h2>Nouveau mot<br>de passe</h2>
-                <p>Choisissez un mot de passe robuste pour sécuriser votre compte client.</p>
-                <div class="auth-features">
-                    <div class="auth-feature">
-                        <i class="bi bi-check-circle"></i>
-                        <span>8 caractères minimum</span>
-                    </div>
-                    <div class="auth-feature">
-                        <i class="bi bi-shield-check"></i>
-                        <span>Compte sécurisé</span>
-                    </div>
-                </div>
-            </div>
-            <div class="auth-card-left-footer">
-                <span>&copy; {{ now()->year }} JENY SAS &middot; Internet fibre, sans compromis</span>
-            </div>
-        </div>
-
         <div class="auth-card-right">
             <div class="auth-form-wrap">
                 <div class="auth-form-header">

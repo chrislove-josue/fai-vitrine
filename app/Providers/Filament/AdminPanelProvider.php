@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\UnifiedLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -18,8 +19,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-use Filament\View\PanelsRenderHook;
-
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -32,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('Jenysas ISP')
             ->brandLogo(asset('img/logo-jeny.png'))
             ->brandLogoHeight('2.25rem')
-            ->login()
+            ->login(UnifiedLogin::class)
             ->font('Montserrat')
             ->colors([
                 'primary' => Color::hex('#0B2545'),
@@ -44,10 +43,6 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->sidebarCollapsibleOnDesktop()
             ->maxContentWidth('max-w-7xl')
-            ->renderHook(
-                PanelsRenderHook::SIMPLE_LAYOUT_START,
-                fn () => view('filament.auth.login-aside'),
-            )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\AdminProfile;
 use App\Filament\Pages\Auth\UnifiedLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -32,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('img/logo-jeny.png'))
             ->brandLogoHeight('2.25rem')
             ->login(UnifiedLogin::class)
+            ->profile(AdminProfile::class, isSimple: false)
             ->font('Montserrat')
             ->colors([
                 'primary' => Color::hex('#0B2545'),
@@ -47,6 +49,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
                 Dashboard::class,
+                AdminProfile::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([

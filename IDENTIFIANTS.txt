@@ -1,0 +1,29 @@
+==========================================================
+   IDENTIFIANTS DE CONNEXION — JENY SAS ISP
+   Fichier de référence (développement uniquement)
+==========================================================
+
+URL de connexion unique :  http://127.0.0.1:8000/login
+
+----------------------------------------------------------
+  ADMINISTRATEUR
+----------------------------------------------------------
+  Email    : admin@jenysas.local
+  Mot de passe : Admin123!
+  Rôle     : super_admin
+  Redirige vers : /admin (Filament)
+
+----------------------------------------------------------
+  CLIENT
+----------------------------------------------------------
+  Email    : client@jenysas.local
+  Mot de passe : MotDePasse1!
+  Rôle     : client
+  Rattaché à : CUS-DEMO001
+  Redirige vers : /dashboard
+
+==========================================================
+  NOTE : Tous les comptes utilisent le guard 'web'.
+         Après connexion, la redirection est automatique
+         selon le rôle (client → /dashboard, staff → /admin).
+==========================================================

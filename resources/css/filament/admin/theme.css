@@ -221,16 +221,17 @@
     @apply rounded-lg;
 }
 
-/* ---- Login page split-screen ---- */
+/* ---- Login page — IDENTICAL to client auth-card layout ---- */
 
-/* Detect login page via the aside injected by render hook */
+/* 1. Force the Filament simple layout into a horizontal split */
 .fi-simple-layout:has(.fi-login-page-aside) {
     display: flex !important;
     flex-direction: row !important;
     align-items: stretch !important;
+    min-height: 100dvh;
 }
 
-/* Aside panel: navy left */
+/* 2. Left navy panel — same as .auth-card-left */
 .fi-login-page-aside {
     display: flex;
     flex-direction: column;
@@ -238,8 +239,8 @@
     flex: 0 0 42%;
     max-width: 42%;
     min-height: 100dvh;
-    padding: 3rem 2.5rem;
-    background: #0B2545;
+    padding: 2.5rem;
+    background: var(--jeny-primary, #0B2545);
     color: #fff;
     position: relative;
     overflow: hidden;
@@ -254,20 +255,18 @@
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: rgba(201, 162, 75, 0.07);
-    pointer-events: none;
+    background: rgba(201, 162, 75, 0.08);
 }
 
 .fi-login-page-aside::after {
     content: '';
     position: absolute;
-    bottom: -25%;
+    bottom: -20%;
     left: -15%;
     width: 400px;
     height: 400px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.04);
-    pointer-events: none;
 }
 
 .fi-login-page-aside-content {
@@ -282,7 +281,7 @@
 .fi-login-page-aside-logo {
     height: 42px;
     width: auto;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     filter: brightness(0) invert(1);
 }
 
@@ -298,7 +297,7 @@
 .fi-login-page-aside-content p {
     font-size: 0.88rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
     max-width: 320px;
 }
 
@@ -308,7 +307,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.65rem;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
 }
 
 .fi-login-page-aside-feature {
@@ -324,11 +323,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
-    color: #C9A24B;
+    color: var(--jeny-accent, #C9A24B);
     font-size: 0.9rem;
     flex-shrink: 0;
 }
@@ -337,23 +336,25 @@
     position: relative;
     z-index: 1;
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.35);
 }
 
-/* Right side: form area */
+/* 3. Right side — same as .auth-card-right */
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-main-ctn {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
+    background: var(--bg, #F7F5F0);
 }
 
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-main {
     margin: 0;
     width: 100%;
     max-width: none;
-    background: #fff;
-    padding: 3rem 2rem;
+    background: transparent;
+    padding: 0;
     border-radius: 0;
     box-shadow: none;
     --tw-ring-shadow: none;
@@ -361,17 +362,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100dvh;
+    min-height: auto;
     box-sizing: border-box;
 }
 
-/* Form card centering */
+/* 4. Form wrapper — same as .auth-form-wrap */
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-main .fi-simple-page {
     width: 100%;
     max-width: 400px;
 }
 
-/* Header */
+/* 5. Header — same as .auth-form-header */
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -380,7 +381,7 @@
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header .fi-logo {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header .fi-logo img {
@@ -388,49 +389,115 @@
     width: auto;
 }
 
-.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #10151F;
-    margin: 0 0 0.25rem;
+/* Icon before heading — same as .auth-form-icon */
+.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header .fi-logo::before {
+    display: none;
 }
 
-.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header p {
+.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary, #10151F);
+    margin: 0 0 0.35rem;
+}
+
+.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-page .fi-simple-header-subheading {
     font-size: 0.85rem;
-    color: #667085;
+    color: var(--text-secondary, #667085);
     margin: 0;
 }
 
-/* Form inputs */
+/* 6. Form fields — same as .auth-field */
+.fi-simple-layout:has(.fi-login-page-aside) .fi-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.fi-simple-layout:has(.fi-login-page-aside) .fi-field-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary, #10151F);
+    margin-bottom: 0.35rem;
+}
+
 .fi-simple-layout:has(.fi-login-page-aside) .fi-input,
 .fi-simple-layout:has(.fi-login-page-aside) .fi-select-input,
 .fi-simple-layout:has(.fi-login-page-aside) .fi-textarea {
-    border-radius: 8px;
-    border-color: #E4EAF2;
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1.5px solid var(--border, #E4EAF2);
+    border-radius: var(--radius-sm, 8px);
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--text-primary, #10151F);
+    background: white;
+    transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .fi-simple-layout:has(.fi-login-page-aside) .fi-input:focus,
 .fi-simple-layout:has(.fi-login-page-aside) .fi-select-input:focus,
 .fi-simple-layout:has(.fi-login-page-aside) .fi-textarea:focus {
-    border-color: #0B2545;
+    outline: none;
+    border-color: var(--jeny-primary, #0B2545);
     box-shadow: 0 0 0 3px rgba(11, 37, 69, 0.08);
 }
 
-/* Primary button */
+/* 7. Checkbox — same as .auth-checkbox */
+.fi-simple-layout:has(.fi-login-page-aside) .fi-checkbox-input {
+    width: auto;
+    accent-color: var(--jeny-primary, #0B2545);
+}
+
+/* 8. Primary button — same as .auth-btn */
 .fi-simple-layout:has(.fi-login-page-aside) .fi-btn-color-primary {
-    background: #0B2545 !important;
-    color: #fff !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.7rem 1.5rem;
+    margin-top: 0.5rem;
+    background: var(--jeny-primary, #0B2545) !important;
+    color: white !important;
+    border: 0;
+    border-radius: var(--radius-sm, 8px);
     font-family: 'Montserrat', sans-serif;
+    font-size: 0.88rem;
     font-weight: 600;
-    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
 }
 
 .fi-simple-layout:has(.fi-login-page-aside) .fi-btn-color-primary:hover {
-    background: #13355F !important;
+    background: var(--jeny-secondary, #13355F) !important;
+    transform: translateY(-1px);
 }
 
-/* Mobile */
+.fi-simple-layout:has(.fi-login-page-aside) .fi-btn-color-primary:active {
+    transform: translateY(0);
+}
+
+/* 9. Password reset link — same as .auth-link */
+.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-header-subheading a,
+.fi-simple-layout:has(.fi-login-page-aside) .fi-component-link {
+    color: var(--jeny-primary, #0B2545);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.fi-simple-layout:has(.fi-login-page-aside) .fi-simple-header-subheading a:hover,
+.fi-simple-layout:has(.fi-login-page-aside) .fi-component-link:hover {
+    color: var(--jeny-secondary, #13355F);
+    text-decoration: underline;
+}
+
+/* 10. Mobile — same as client @media */
 @media (max-width: 768px) {
     .fi-simple-layout:has(.fi-login-page-aside) {
         flex-direction: column !important;
@@ -443,14 +510,17 @@
         padding: 2rem 1.5rem;
     }
 
+    .fi-login-page-aside-content h2 {
+        font-size: 1.35rem;
+    }
+
     .fi-login-page-aside-features,
     .fi-login-page-aside-footer {
         display: none;
     }
 
-    .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-main {
-        min-height: auto;
-        padding: 2rem 1.5rem;
+    .fi-simple-layout:has(.fi-login-page-aside) .fi-simple-main-ctn {
+        padding: 1.5rem;
     }
 }
 

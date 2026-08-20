@@ -64,26 +64,51 @@
 }
 
 .fi-sidebar-group-label {
-    @apply text-white/50;
+    color: rgba(255, 255, 255, 0.5);
 }
 
-.fi-sidebar-item-button {
-    @apply text-white/90 hover:bg-white/15 hover:text-white rounded-lg;
+/* All sidebar item buttons — white text */
+.fi-sidebar-item-btn {
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
 }
 
-.fi-sidebar-item-active .fi-sidebar-item-button,
-.fi-sidebar-item-button.fi-active {
-    @apply bg-white/20 text-white font-semibold;
+.fi-sidebar-item-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
 }
 
-.fi-sidebar-item-active .fi-sidebar-item-icon,
-.fi-sidebar-item-button.fi-active .fi-sidebar-item-icon {
-    @apply text-[#C9A24B];
+/* Icons default white */
+.fi-sidebar-item-btn > .fi-icon {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.fi-sidebar-item-active .fi-sidebar-item-label,
-.fi-sidebar-item-button.fi-active .fi-sidebar-item-label {
-    @apply font-semibold text-white;
+.fi-sidebar-item-btn:hover > .fi-icon {
+    color: #fff;
+}
+
+/* Label default white */
+.fi-sidebar-item-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ACTIVE state: gold text + subtle bg */
+.fi-sidebar.fi-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
+.fi-sidebar.fi-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.fi-sidebar.fi-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-icon {
+    color: #C9A24B !important;
+}
+
+.fi-sidebar.fi-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-label {
+    color: #C9A24B !important;
+    font-weight: 600;
+}
+
+.fi-sidebar.fi-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-grouped-border > .fi-sidebar-item-grouped-border-part {
+    background: #C9A24B;
 }
 
 /* ---- Topbar : blanc, light ---- */
